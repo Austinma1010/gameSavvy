@@ -1,8 +1,8 @@
 const typeDefs = `
 
-type game = {
-    gameID: string;
-   title :string!
+type game {
+    gameID: String
+   title: String!
 }
 
 type User {
@@ -25,7 +25,7 @@ type User {
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveGame(gameData: gameInput!): User
+    saveGame(title: String!, gameID: String): User
     removeGame(gameId: ID!): User
   }
 `;
