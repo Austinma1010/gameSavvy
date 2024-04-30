@@ -24,5 +24,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const SAVE_GAME = gql`
+mutation SaveGame($title: String!) {
+  saveGame(title: $title) {
+    trackedGame {
+      title
+    }
+  }
+}
+`;
+
 
 // need mutation for save search result and remove search result 
