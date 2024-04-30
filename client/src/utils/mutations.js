@@ -25,4 +25,4 @@ export const ADD_USER = gql`
 `;
 
 
-// need mutation for save search result 
+// need mutation for save search result and remove search result 

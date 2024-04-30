@@ -15,3 +15,4 @@ export const QUERY_USER = gql`
   }
 `;
 
+// need query for searches
