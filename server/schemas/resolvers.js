@@ -44,12 +44,13 @@ const resolvers = {
   
         return { token, user };
       },
-      saveGame: async (parent, { gameData }, context) => {
+      saveGame: async (parent, { title }, context) => {
         // Logic to save a game for the user
         if (context.user) {
+          console.log('about to update');
             const updatedUser = await User.findByIdAndUpdate(
               { _id: context.user._id },
-              { $push: { gameSchema: gameData } },
+              { $push: { trackedGames: {title} } },
               { new: true }
             );
     
@@ -58,12 +59,12 @@ const resolvers = {
     
           throw AuthenticationError;
       },
-      removeGame: async (parent, { gameId }, context) => {
+      removeGame: async (parent, { title }, context) => {
         // Logic to remove a game from the user's tracked games
         if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },
-              { $pull: { gameSchema: { gameId } } },
+              { $pull: { trackedGames: { title } } },
               { new: true }
             );
     
