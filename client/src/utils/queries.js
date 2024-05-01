@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-query TrackedGame {
+query TrackedGames {
   me {
-    trackedGame {
+    trackedGames {
       title
     }
     username

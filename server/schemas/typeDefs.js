@@ -9,7 +9,7 @@ type User {
     _id: ID!
     username: String!
     email: String
-    trackedGame: [game]
+    trackedGames: [game]
   }
 
   type Auth {
@@ -26,7 +26,7 @@ type User {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveGame(title: String!, gameID: String): User
-    removeGame(gameId: ID!): User
+    removeGame(title: String!): User
   }
 `;
 
