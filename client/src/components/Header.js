@@ -1,23 +1,12 @@
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-  } from '@chakra-ui/react'
+import { Flex, Spacer } from '@chakra-ui/react'
 
-  <Breadcrumb>
-  <BreadcrumbItem>
-    <BreadcrumbLink href='#'>Home</BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href='#'>Login</BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem>
-    <BreadcrumbLink href='#'>Signup</BreadcrumbLink>
-  </BreadcrumbItem>
-
-  <BreadcrumbItem isCurrentPage>
-    <BreadcrumbLink href='#'>Breadcrumb</BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
+<Flex minWidth='max-content' alignItems='center' gap='2'>
+  <Box p='2'>
+    <Heading size='md'>Game Savvy</Heading>
+  </Box>
+  <Spacer />
+  <ButtonGroup gap='2'>
+    <Button colorScheme='whatsapp' variant='ghost'>Sign Up</Button>
+    <Button colorScheme='whatsapp' variant='ghost'>Log in</Button>
+  </ButtonGroup>
+</Flex>
