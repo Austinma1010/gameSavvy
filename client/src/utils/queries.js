@@ -11,4 +11,3 @@ query TrackedGames {
 }
 `;
 
-// need query for searches
