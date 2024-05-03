@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Spacer } from '@chakra-ui/react'
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
 
-const AppNavbar = () => {
+const Navbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
@@ -14,20 +13,15 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
-            Google Books Search
-          </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
             <Nav className='ml-auto d-flex'>
               <Nav.Link as={Link} to='/'>
-                Search For Books
+                Search For Games
               </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Books
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
@@ -74,16 +68,4 @@ const AppNavbar = () => {
   );
 };
 
-export default AppNavbar;
-
-
-<Flex minWidth='max-content' alignItems='center' gap='2'>
-<Box p='2'>
-  <Heading size='md'>Game Savvy</Heading>
-</Box>
-<Spacer />
-<ButtonGroup gap='2'>
-  <Button colorScheme='whatsapp' variant='ghost'>Sign Up</Button>
-  <Button colorScheme='whatsapp' variant='ghost'>Log in</Button>
-</ButtonGroup>
-</Flex>
+export default Navbar;
