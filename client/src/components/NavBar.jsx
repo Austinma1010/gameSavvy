@@ -5,6 +5,16 @@ import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+
 const Navbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
@@ -69,3 +79,85 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+function InitialFocus() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const initialRef = React.useRef(null)
+  const finalRef = React.useRef(null)
+
+  return (
+    <>
+      <Button onClick={onOpen}>Signup</Button>
+
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Signup</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Email</FormLabel>
+              <Input ref={initialRef} placeholder='Email' />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Password</FormLabel>
+              <Input placeholder='Password' />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3}>
+              Save
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+}
+
+// function InitialFocus() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const initialRef = React.useRef(null)
+  const finalRef = React.useRef(null)
+
+  return (
+    <>
+      <Button onClick={onOpen}>Login</Button>
+
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Login</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Email</FormLabel>
+              <Input ref={initialRef} placeholder='Email' />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Password</FormLabel>
+              <Input placeholder='Password' />
+            </FormControl>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+// }
