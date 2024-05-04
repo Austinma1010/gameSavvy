@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, SearchIcon } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons';
 import Auth from '../utils/auth';
 import { getDeals, gameSearch } from '../utils/API';
 import { SAVE_GAME } from '../utils/mutations';
