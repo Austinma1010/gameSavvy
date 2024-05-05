@@ -1,9 +1,20 @@
-import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input, Box, Stack, Heading, Divider, ButtonGroup, Button, Image, Text, Link } from '@chakra-ui/react'
+
+import { useState, useEffect } from 'react'; 
+
+import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input, Box, Stack, Heading, Divider, ButtonGroup, Button, Image, Text, Link  } from '@chakra-ui/react'
+// import chakra ui design elements
+
+
 import { SearchIcon } from '@chakra-ui/icons';
+// import icon from chakra ui
+
 import Auth from '../utils/auth';
+
 import { getDeals, gameSearch } from '../utils/API';
+
 import { SAVE_GAME } from '../utils/mutations';
+// import save game mutation
+
 import { useMutation } from '@apollo/client';
 
 const SearchGames = (props) => {
@@ -135,3 +146,4 @@ const SearchGames = (props) => {
 
 
 export default SearchGames;
+// export as

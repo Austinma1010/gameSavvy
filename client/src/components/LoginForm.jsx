@@ -1,18 +1,16 @@
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Stack,
-  Button,
-  Heading,
-  useColorModeValue,
-} from '@chakra-ui/react';
+
 import { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client'
+
+import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, useColorModeValue, } from '@chakra-ui/react';
+// import chakra ui elements 
+
+import { useQuery, useMutation,  } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+// import login mutations 
+
 import Auth from '../utils/auth';
+
+
 export default function LoginForm() {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);

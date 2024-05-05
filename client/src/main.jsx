@@ -15,6 +15,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql'
+});
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -48,6 +56,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
   </ApolloProvider>
 )
-
 
 

@@ -1,8 +1,15 @@
 import { Button, Container, Card, SimpleGrid, } from '@chakra-ui/react'
+// import chakra ui elements 
+
 import { useQuery, useMutation } from '@apollo/client'
+
 import { QUERY_USER} from '../utils/queries';
+// import query user from queries file
+
 import auth from '../utils/auth';
+
 import { REMOVE_GAME } from '../utils/mutations';
+// import remove game mutation
 
 const saveGame = () => {
     const {loading, data} = useQuery(QUERY_USER);
@@ -77,3 +84,4 @@ const saveGame = () => {
 };
 
 export default saveGame;
+// export as

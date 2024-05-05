@@ -2,14 +2,12 @@ import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
 
-import Navbar from './components/NavBar';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+import Navbar from './components/NavBar';
+// importing navbar
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -34,10 +32,12 @@ function App() {
   return (
 
     <ApolloProvider client={client}>
-      
+
         <Navbar />
+        
         <Outlet />
-      
+        
+
     </ApolloProvider>
   )
 }

@@ -1,19 +1,12 @@
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Stack,
-  Button,
-  Heading,
-  useColorModeValue
-} from '@chakra-ui/react';
+import { Flex, Box, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack, Button, Heading, useColorModeValue } from '@chakra-ui/react';
+// import chakra ui sign up form elements
+
 import { useState } from 'react';
 import { useMutation,  } from '@apollo/client';
+
 import { ADD_USER } from '../utils/mutations';
+// import add user mutation 
+
 import Auth from '../utils/auth';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
