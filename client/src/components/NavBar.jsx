@@ -23,11 +23,11 @@ const Navbar = () => {
 
         <ButtonGroup gap='2'>
 
-            <Link to=''>
+            <Link to='/Signup'>
               <Button colorScheme='teal' size='lg'>Sign-up</Button>
             </Link>
 
-            <Link to=''>
+            <Link to='login'>
               <Button colorScheme='teal' size='lg'>Login</Button>
             </Link>
 
