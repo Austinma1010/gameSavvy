@@ -15,8 +15,7 @@ import { useState } from 'react';
 import { useMutation,  } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { useQuery, useMutation } from '@apollo/client'
-import { ADD_USER } from '../utils/mutations';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
