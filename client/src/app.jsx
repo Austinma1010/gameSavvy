@@ -21,8 +21,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-import Navbar from './components/NavBar';
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
