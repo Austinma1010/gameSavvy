@@ -9,8 +9,7 @@ import {
   Stack,
   Button,
   Heading,
-  useColorModeValue,
-  Link,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Auth from '../utils/auth';
