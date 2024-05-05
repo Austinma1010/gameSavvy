@@ -1,5 +1,4 @@
-import './App.css';
-import { Outlet } from 'react-router-dom';
+import Navbar from './components/NavBar';
 import {
   ApolloClient,
   InMemoryCache,
@@ -21,8 +20,6 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
-import Navbar from './components/NavBar';
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),

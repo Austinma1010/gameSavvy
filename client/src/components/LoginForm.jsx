@@ -4,12 +4,9 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
-  Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
@@ -59,6 +56,7 @@ export default function LoginForm() {
     });
   };
 
+  
   return (
     <Flex
       minH={'100vh'}

@@ -1,32 +1,42 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
-import { Button, Container, Card, SimpleGrid,Modal,  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,} from '@chakra-ui/react'
-import Auth from '../utils/auth';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { Heading, Button, ButtonGroup } from '@chakra-ui/react'
+
+import Signup from '../SignupForm';
+import  Login from '../LoginForm';
+
+import { Button, Flex, Spacer, } from '@chakra-ui/react'
 
 const Navbar = () => {
+
+
+
   return (
     <>
+      <Flex minWidth='max-content' alignItems='center' gap='2'>
 
-      <Link to='/'>
-      <h2>Game Savvy</h2>
-      </Link>
-      <div>
-        <Link to='/login'>
-          <button>Login</button>
-        </Link>
-        <Link to='/Signup'>
-          <button>Sign-up</button>
-        </Link>
-      </div>
-    </>
-  );
-};
+        <Box p='2'>
+          <Heading size='md'>Game Savvy</Heading>
+        </Box>
+
+        <Spacer />
+
+        <ButtonGroup gap='2'>
+
+            <Link to='/Signup'>
+              <Button colorScheme='teal' size='lg'>Sign-up</Button>
+            </Link>
+
+            <Link to='login'>
+              <Button colorScheme='teal' size='lg'>Login</Button>
+            </Link>
+
+          </ButtonGroup>
+
+        </Flex>
+      
+</>
+
+)}; 
 
 export default Navbar;
