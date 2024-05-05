@@ -88,7 +88,7 @@ const SearchGames = (props) => {
                 />
                 <IconButton
                 type='submit'
-                colorScheme='blue'
+                colorScheme='whatsapp'
                 aria-label='Search database'
                 icon={<SearchIcon />}
                 />
