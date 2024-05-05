@@ -1,3 +1,7 @@
+import './App.css';
+import { Outlet } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react'
+
 import Navbar from './components/NavBar';
 import {
   ApolloClient,
@@ -28,13 +32,14 @@ const client = new ApolloClient({
 
 function App() {
   return (
+
     <ApolloProvider client={client}>
       
         <Navbar />
         <Outlet />
       
     </ApolloProvider>
-  );
+  )
 }
 
 export default App;
