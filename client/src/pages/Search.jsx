@@ -77,8 +77,10 @@ const SearchGames = (props) => {
 
     return (
         <>
-        <div>
-            <h2>Search for Games!</h2>
+        <Box p='5' m='7' align="center">
+            <Card maxW='sm' align="center" back>
+            <Text m='4' >Search for a game to begin</Text>
+            
             <form onSubmit={handleFormSubmit}>
                 <Input 
                 placeholder='Enter Game Title'
@@ -94,13 +96,15 @@ const SearchGames = (props) => {
                 icon={<SearchIcon />}
                 />
             </form>
-        </div>
+            
+            </Card>
+        </Box>
         <div>
-            <h2 className='pt-5'>
+            <Text m='4'>
              {searchedGames.length
              ? `Viewing ${searchedGames.length} results:`
-             : 'Search for a game to begin'}
-            </h2>
+             : ''}
+            </Text>
             <div>
                 {searchedGames.map((game) => {
                     return (

@@ -61,7 +61,7 @@ console.log(data);
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+          <Heading fontSize={'4xl'}>Login to your account</Heading>
         </Stack>
         <Box
           rounded={'lg'}
