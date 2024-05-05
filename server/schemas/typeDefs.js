@@ -25,7 +25,7 @@ type User {
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveGame(title: String!, gameID: String): User
+    saveGame(title: String!, gameID: String, token: String): User
     removeGame(title: String!): User
   }
 `;

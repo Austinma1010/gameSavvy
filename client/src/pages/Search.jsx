@@ -20,7 +20,7 @@ import { useMutation } from '@apollo/client';
 const SearchGames = (props) => {
     const [searchedGames, setSearchedGames] = useState([]);
     const [searchInput, setSearchInput] = useState('');
-    
+    const [saveGameMutation, { loading, error }] = useMutation(SAVE_GAME);
 
     const swapPage = (location) => {
         window.location.href = location;
@@ -57,18 +57,18 @@ const SearchGames = (props) => {
     };
 
     const handleSaveGame = async (title) => {
-        const [saveGameMutation, { loading, error }] = useMutation(SAVE_GAME);
         
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+        
         if (!token) {
           return false;
         }
-
+        
         try {
             const { data } = await saveGameMutation({
-                variables: { title },
+                variables: { title, token },
               });
+              console.log(data);
               console.log('Game Saved!');
         } catch(err) {
             console.error(err);

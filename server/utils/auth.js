@@ -16,13 +16,17 @@ module.exports = {
     }
 
     if (!token) {
+      
       return req;
     }
 
     // verify token and get user data out of it
     try {
+      console.log('checking jwt');
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      console.log('checked jwt');
+      console.log(data);
+      return data;
     } catch {
       console.log('Invalid token');
       return res.status(400).json({ message: 'invalid token!' });
@@ -38,9 +42,8 @@ module.exports = {
   },
   authenticate: function (token) {
     try {
-      
       const decodedToken = jwt.verify(token, secret);
-      return decodedToken.userId; 
+      return decodedToken.data._id; 
     } catch (error) {
       throw new Error('Authentication failed');
     }

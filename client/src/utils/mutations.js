@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_GAME = gql`
-mutation SaveGame($title: String!) {
-  saveGame(title: $title) {
+mutation SaveGame($title: String!, $token: String) {
+  saveGame(title: $title, token: $token ) {
     trackedGames {
       title
     }
