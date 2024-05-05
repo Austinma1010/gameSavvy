@@ -18,12 +18,20 @@ const Navbar = () => {
 
         <ButtonGroup gap='2'>
 
+        <Link to='/'>
+              <Button colorScheme='teal' size='lg'>Homepage</Button>
+            </Link>
+
             <Link to='/Signup'>
               <Button colorScheme='teal' size='lg'>Sign-up</Button>
             </Link>
 
             <Link to='login'>
               <Button colorScheme='teal' size='lg'>Login</Button>
+            </Link>
+
+            <Link to='/saves'>
+              <Button colorScheme='teal' size='lg'>My saves</Button>
             </Link>
 
           </ButtonGroup>
