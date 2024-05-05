@@ -14,6 +14,47 @@ import {
 } from '@chakra-ui/react';
 
 export default function LoginForm() {
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [loginUserMutation, { loading, error }] = useMutation(LOGIN_USER);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const response = await loginUserMutation(userFormData);
+
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      const { token, user } = await response.json();
+      console.log(user);
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
+
+    setUserFormData({
+      username: '',
+      email: '',
+      password: '',
+    });
+  };
+
   return (
     <Flex
       minH={'100vh'}
@@ -30,16 +71,17 @@ export default function LoginForm() {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl onChange={handleInputChange} id="email">
               <FormLabel>Email address</FormLabel>
               <Input type="email" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input onChange={handleInputChange} type="password" />
             </FormControl>
             <Stack spacing={10}>
               <Button
+                onClick={handleFormSubmit}
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
