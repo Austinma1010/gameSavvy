@@ -56,10 +56,10 @@ const saveGame = () => {
                   return (
                     <div key={game.gameid}>
                         <Card>
-                            {game.image ? <Card.img src={game.image} alt={`the cover for ${game.title}`} /> : null}
+                            {game.image ? <Card.img src={game.gameimg} alt={`the cover for ${game.title}`} /> : null}
                             <Card.body>
                                 <Card.title>{game.title}</Card.title>
-                                <p>Sale price: {game.sale}</p>
+                                <p>Sale price: {game.deal}</p>
                                 <p>retail price: {game.retail}</p>
                                 <Button onClick={() => deleteGame(game.gameid)}>
                                     Remove game
