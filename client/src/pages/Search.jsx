@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input, Box, Stack, Heading, Divider, ButtonGroup, Button, Image, Text, Link } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons';
 import Auth from '../utils/auth';
 import { getDeals, gameSearch } from '../utils/API';
 import { SAVE_GAME } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-const SearchGames = () => {
+const SearchGames = (props) => {
     const [searchedGames, setSearchedGames] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+    
+
+    const swapPage = (location) => {
+        window.location.href = location;
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -23,14 +28,14 @@ const SearchGames = () => {
             if (!response.ok) {
                 throw new Error('something went wrong!');
               }
-
-              const { games } = await response.json();
+              const games  = await response.json();
+              
               const gameData = games.map((game) => ({
                 gameId: game.gameID,
                 title: game.external,
                 gameImg: game.thumb,
                 deal: game.cheapest,
-                dealId: game.cheapestDealID
+                dealId: 'https://www.cheapshark.com/redirect?dealID=' + game.cheapestDealID
               }));
 
               setSearchedGames(gameData)
@@ -42,7 +47,7 @@ const SearchGames = () => {
 
     const handleSaveGame = async (title) => {
         const [saveGameMutation, { loading, error }] = useMutation(SAVE_GAME);
-
+        
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -84,11 +89,11 @@ const SearchGames = () => {
              ? `Viewing ${searchedGames.length} results:`
              : 'Search for a game to begin'}
             </h2>
-            <SimpleGrid columns={2} spacing={10}>
+            <div>
                 {searchedGames.map((game) => {
                     return (
-                        <>
-                          <Box height='80px'>
+                        
+                          <div key={game.gameId}>
                           <Card maxW='sm'>
                            <CardBody>
                             <Image
@@ -107,19 +112,22 @@ const SearchGames = () => {
                            <Divider />
                            <CardFooter>
                           <ButtonGroup spacing='2'>
-                           <Button onClick={handleSaveGame} variant='solid' colorScheme='blue'>
+                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='blue'>
                              Track
                           </Button>
-                
+                          
+                          <Button onClick={() => swapPage(game.dealId)}>
+                            Checkout deal
+                          </Button>
                         </ButtonGroup>
                         </CardFooter>
                         </Card>
 
-                          </Box>
-                        </>
+                          
+                        </div>
                     )
                 })}
-            </SimpleGrid>
+            </div>
         </div>
         </>
     )

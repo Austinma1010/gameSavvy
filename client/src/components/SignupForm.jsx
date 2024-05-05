@@ -17,6 +17,9 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import Auth from '../utils/auth';
+import { useQuery, useMutation } from '@apollo/client'
+import { ADD_USER } from '../utils/mutations';
+
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -37,15 +40,13 @@ export default function SignupForm() {
       event.preventDefault();
       event.stopPropagation();
     }
-
+const { username, email, password } = userFormData;
     try {
-      const response = await createUserMutation(userFormData);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
+      console.log(userFormData);
+      const data = await createUserMutation({
+        variables: {username,email,password}
+      });
+      const { token, user } = data;
       console.log(user);
       Auth.login(token);
     } catch (err) {
@@ -80,12 +81,12 @@ export default function SignupForm() {
           <Stack spacing={4}>
             <FormControl onChange={handleInputChange} id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input  onChange={handleInputChange} name="email" value={userFormData.email} type="email" />
             </FormControl>
             <FormControl onChange={handleInputChange} id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input onChange={handleInputChange} name="password" value={userFormData.password} type={showPassword ? 'text' : 'password'} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -97,9 +98,9 @@ export default function SignupForm() {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-            <FormControl onChange={handleInputChange} id="username" isRequired>
+            <FormControl id="username" isRequired>
               <FormLabel>Username</FormLabel>
-              <Input type="text" />
+              <Input onChange={handleInputChange} name='username' value={userFormData.username} type="text" />
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
