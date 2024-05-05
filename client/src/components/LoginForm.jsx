@@ -91,12 +91,10 @@ console.log(data);
             </FormControl>
             <Stack spacing={10}>
               <Button
+
                 onClick={handleFormSubmit}
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
+                colorScheme='whatsapp'
+                _hover={{ bg: 'gray.400', }} >
                 Sign in
               </Button>
             </Stack>

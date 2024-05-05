@@ -89,6 +89,7 @@ const SearchGames = (props) => {
                 <IconButton
                 type='submit'
                 colorScheme='whatsapp'
+                size='lg'
                 aria-label='Search database'
                 icon={<SearchIcon />}
                 />
@@ -123,11 +124,11 @@ const SearchGames = (props) => {
                            <Divider />
                            <CardFooter>
                           <ButtonGroup spacing='2'>
-                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='blue'>
+                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='whatsapp' size='lg'>
                              Track
                           </Button>
                           
-                          <Button onClick={() => swapPage(game.dealId)}>
+                          <Button onClick={() => swapPage(game.dealId)} colorScheme='whatsapp' size='lg' _hover={{ bg: 'gray.400', }} >
                             Checkout deal
                           </Button>
                         </ButtonGroup>

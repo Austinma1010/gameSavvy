@@ -68,7 +68,7 @@ const saveGame = () => {
                                 <Card.title>{game.title}</Card.title>
                                 <p>Sale price: {game.deal}</p>
                                 <p>retail price: {game.retail}</p>
-                                <Button onClick={() => deleteGame(game.gameid)}>
+                                <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400', }} onClick={() => deleteGame(game.gameid)}>
                                     Remove game
                                 </Button>
                             </Card.body>
