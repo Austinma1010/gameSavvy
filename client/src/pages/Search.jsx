@@ -77,8 +77,10 @@ const SearchGames = (props) => {
 
     return (
         <>
-        <div>
-            <h2>Search for Games!</h2>
+        <Box p='5' m='7' align="center">
+            <Card maxW='sm' align="center" back>
+            <Text m='4' >Search for a game to begin</Text>
+            
             <form onSubmit={handleFormSubmit}>
                 <Input 
                 placeholder='Enter Game Title'
@@ -89,17 +91,20 @@ const SearchGames = (props) => {
                 <IconButton
                 type='submit'
                 colorScheme='whatsapp'
+                size='lg'
                 aria-label='Search database'
                 icon={<SearchIcon />}
                 />
             </form>
-        </div>
+            
+            </Card>
+        </Box>
         <div>
-            <h2 className='pt-5'>
+            <Text m='4'>
              {searchedGames.length
              ? `Viewing ${searchedGames.length} results:`
-             : 'Search for a game to begin'}
-            </h2>
+             : ''}
+            </Text>
             <div>
                 {searchedGames.map((game) => {
                     return (
@@ -123,11 +128,11 @@ const SearchGames = (props) => {
                            <Divider />
                            <CardFooter>
                           <ButtonGroup spacing='2'>
-                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='blue'>
+                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='whatsapp' size='lg'>
                              Track
                           </Button>
                           
-                          <Button onClick={() => swapPage(game.dealId)}>
+                          <Button onClick={() => swapPage(game.dealId)} colorScheme='whatsapp' size='lg' _hover={{ bg: 'gray.400', }} >
                             Checkout deal
                           </Button>
                         </ButtonGroup>
