@@ -1,4 +1,5 @@
-import { SearchGames } from './pages/Search'import {
+import Navbar from './components/NavBar';
+import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
@@ -26,9 +27,6 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-import { SearchGames } from './pages/Search'
-import { saveGame } from './pages/Saves'
-import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
