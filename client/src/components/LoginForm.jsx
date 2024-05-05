@@ -9,11 +9,10 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-
-import { useMutation,  } from '@apollo/client';
+import { useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../utils/mutations';
-
+import Auth from '../utils/auth';
 export default function LoginForm() {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
@@ -28,20 +27,19 @@ export default function LoginForm() {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    
+    
 
     try {
-      const response = await loginUserMutation(userFormData);
+      console.log(userFormData);
+      const {email, password} = userFormData;
+      const { data } = await loginUserMutation({
+        variables: {email, password},
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
+    
+console.log(data);
+      const { token, user } = data;
       console.log(user);
       Auth.login(token);
     } catch (err) {
@@ -73,13 +71,25 @@ export default function LoginForm() {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl onChange={handleInputChange} id="email">
+            <FormControl>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input 
+              type="email"
+              onChange={handleInputChange}
+              id="email"
+              name="email"
+              value={userFormData.email}
+               />
             </FormControl>
-            <FormControl id="password">
+            <FormControl>
               <FormLabel>Password</FormLabel>
-              <Input onChange={handleInputChange} type="password" />
+              <Input 
+              type="password"
+              onChange={handleInputChange} 
+              id="password"
+              name="password"
+              value={userFormData.password}
+               />
             </FormControl>
             <Stack spacing={10}>
               <Button

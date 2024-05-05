@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { Heading, Button, ButtonGroup } from '@chakra-ui/react'
-
-import Signup from '../SignupForm';
-import  Login from '../LoginForm';
-
-import { Button, Flex, Spacer, } from '@chakra-ui/react'
+import { Heading, Button, ButtonGroup, Flex, Box, Spacer  } from '@chakra-ui/react'
 
 const Navbar = () => {
 
