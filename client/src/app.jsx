@@ -1,9 +1,8 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import './App.css';
+import { Outlet } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react'
+
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 
 import { setContext } from '@apollo/client/link/context';
 
@@ -11,7 +10,7 @@ import Navbar from './components/NavBar';
 // importing navbar
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -25,19 +24,19 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
+
         <Navbar />
         
         <Outlet />
         
-      </Router>
+
     </ApolloProvider>
   );
 }
