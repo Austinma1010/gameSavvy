@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink } from '@chakra-ui/react'
+import * as React from "react";
+import { Link } from "react-router-dom";
 import { Heading, Button, ButtonGroup } from '@chakra-ui/react'
 
-import useState from '/SignupForm';
-import LoginForm from '/LoginForm';
+import Signup from '../SignupForm';
+import  Login from '../LoginForm';
 
 import { Button, Flex, Spacer, } from '@chakra-ui/react'
 
@@ -24,13 +23,13 @@ const Navbar = () => {
 
         <ButtonGroup gap='2'>
 
-            <ChakraLink as={ReactRouterLink} to='/'>
-              <Button colorScheme='teal' size='lg'>Signup</Button>
-            </ChakraLink>
+            <Link to=''>
+              <Button colorScheme='teal' size='lg'>Sign-up</Button>
+            </Link>
 
-            <ChakraLink as={ReactRouterLink} to='/'>
+            <Link to=''>
               <Button colorScheme='teal' size='lg'>Login</Button>
-            </ChakraLink>
+            </Link>
 
           </ButtonGroup>
 
