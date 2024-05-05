@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { Heading, Button, ButtonGroup, Flex, Box, Spacer  } from '@chakra-ui/react'
+import { Heading, Button, ButtonGroup, Flex, Box, Spacer } from '@chakra-ui/react'
 
 const Navbar = () => {
 
@@ -19,19 +19,19 @@ const Navbar = () => {
         <ButtonGroup gap='2'>
 
         <Link to='/'>
-              <Button colorScheme='teal' size='lg'>Homepage</Button>
+              <Button colorScheme='whatsapp' size='lg'>Homepage</Button>
             </Link>
 
             <Link to='/Signup'>
-              <Button colorScheme='teal' size='lg'>Sign-up</Button>
+              <Button colorScheme='whatsapp' size='lg'>Sign-up</Button>
             </Link>
 
             <Link to='login'>
-              <Button colorScheme='teal' size='lg'>Login</Button>
+              <Button colorScheme='whatsapp' size='lg'>Login</Button>
             </Link>
 
             <Link to='/saves'>
-              <Button colorScheme='teal' size='lg'>My saves</Button>
+              <Button colorScheme='whatsapp' size='lg'>My saves</Button>
             </Link>
 
           </ButtonGroup>

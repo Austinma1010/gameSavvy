@@ -2,18 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+
 import Home from './pages/Search';
 import Saves from './pages/Saves';
 import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql'
-});
-const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache(),
-});
+
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql'
@@ -52,7 +50,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
 <React.StrictMode>
+  <ChakraProvider>
   <RouterProvider router={router} />
+  </ChakraProvider>
   </React.StrictMode>
   </ApolloProvider>
 )
