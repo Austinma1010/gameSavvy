@@ -62,7 +62,7 @@ export default function LoginForm() {
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+          <Heading fontSize={'4xl'}>Login to your account</Heading>
         </Stack>
         <Box
           rounded={'lg'}
@@ -92,12 +92,10 @@ export default function LoginForm() {
             </FormControl>
             <Stack spacing={10}>
               <Button
+
                 onClick={handleFormSubmit}
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
+                colorScheme='whatsapp'
+                _hover={{ bg: 'gray.400', }} >
                 Sign in
               </Button>
             </Stack>

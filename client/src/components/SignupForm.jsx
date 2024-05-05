@@ -97,10 +97,9 @@ const { username, email, password } = userFormData;
                 onClick={handleFormSubmit}
                 loadingText="Submitting"
                 size="lg"
-                bg={'blue.400'}
-                color={'white'}
+                colorScheme='whatsapp'
                 _hover={{
-                  bg: 'blue.500',
+                  bg: 'gray.400',
                 }}>
                 Sign up
               </Button>
