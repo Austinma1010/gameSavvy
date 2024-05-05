@@ -36,9 +36,10 @@ export default function LoginForm() {
       });
 
     
-console.log(data);
-      const { token, user } = data;
-      console.log(user);
+
+      const { login } = data;
+      const {user, token} = login;
+      
       Auth.login(token);
     } catch (err) {
       console.error(err);
