@@ -1,7 +1,7 @@
 
 
 // theme.js
-export default theme {
+export default {
     colors: {
       transparent: 'transparent',
       black: '#000',

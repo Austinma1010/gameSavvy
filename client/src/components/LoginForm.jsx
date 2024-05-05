@@ -9,9 +9,9 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { LOGIN_USER } from '../utils/mutations';
 
 export default function LoginForm() {
+  const [] = useState(false);
   return (
     <Flex
       minH={'100vh'}
@@ -37,7 +37,7 @@ export default function LoginForm() {
               <Input type="password" />
             </FormControl>
             <Stack spacing={10}>
-              <Button 
+              <Button
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
