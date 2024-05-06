@@ -14,7 +14,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql'
+  uri: 'https://gamesavvy.onrender.com/graphql'
 });
 const client = new ApolloClient({
   link: httpLink,
