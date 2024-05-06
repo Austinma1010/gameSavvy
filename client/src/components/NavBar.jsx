@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Flex gap='1' bg='black' alignItems='center'>
+      <Flex gap='1' bg='black' >
 
         <Box p='4' bg='black' color='white' axis='both' >
           <Heading as='h2' size='2xl'  bgGradient='linear(to-l, #FFFFFF, RGBA(255, 255, 255, 0.48) )' bgClip='text' fontSize='6xl' fontWeight='medium-light'>Game Savvy</Heading>
