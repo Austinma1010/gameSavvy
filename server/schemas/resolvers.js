@@ -3,10 +3,11 @@ const { signToken, authenticate } = require("../utils/auth");
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
-          if (context.user) {
+        me: async (parent, { token }, context) => {
+          userToken = await authenticate(token);
+          if (userToken) {
             
-            const userData = await User.findOne({ _id: context.user._id });
+            const userData = await User.findOne({ _id: userToken });
 
             if (!userData) {
               return console.log("couldn't find user");

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'; 
-
-import { Card, CardBody, CardFooter,IconButton, Input, Flex, Box, Heading, Spacer, ButtonGroup, Button, Image, Text, Container } from '@chakra-ui/react'
+  
+import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input, Box, Stack, Heading, Divider, ButtonGroup, Button, Image, Text, Link  } from '@chakra-ui/react'
 // import chakra ui design elements
 
 
@@ -77,95 +77,72 @@ const SearchGames = (props) => {
 
     return (
         <>
-
-    <Flex p='5' m='5'>
-        <Container direction={{ base: 'column', sm: 'row' }} overflow='hidden' align='center'  >
-           <Box  flex='1' w='100%'>
-            <Text  fontSize='6xl' >Search for a game to begin</Text>
-            
+        <div>
+            <h2>Search for Games!</h2>
             <form onSubmit={handleFormSubmit}>
-                <Input m='4'
+                <Input 
                 placeholder='Enter Game Title'
                 name='searchInput'
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 />
-                <IconButton m='2'
+                <IconButton
                 type='submit'
                 colorScheme='whatsapp'
-                size='lg'
                 aria-label='Search database'
                 icon={<SearchIcon />}
                 />
             </form>
-            
-            </Box>
-        
-
-        <Box >
+        </div>
+        <div>
+            <h2 className='pt-5'>
+             {searchedGames.length
+             ? `Viewing ${searchedGames.length} results:`
+             : 'Search for a game to begin'}
+            </h2>
             <div>
-                <Text m='4' fontSize='3xl' align="center" >
-                    {searchedGames.length
-                    ? `Viewing ${searchedGames.length} results:`
-                    : ''}
-                </Text>
-            <div>
-            
-            
-            {searchedGames.map((game) => {
-                    
-            return (
-              
-                <div key={game.gameId}>
-                <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' align='center'>
-
-                    <CardBody align="center">
-
-                        <Image 
-                            objectFit='cover'
-                            src={game.gameImg}
-                            alt='Green double couch with wooden legs'
-                            borderRadius='lg'
-                            />
-
-                        <Heading size='lg'>{game.title}</Heading>
+                {searchedGames.map((game) => {
+                    return (
+                        
+                          <div key={game.gameId}>
+                          <Card maxW='sm'>
+                           <CardBody>
+                            <Image
+                             src={game.gameImg}
+                             alt='Green double couch with wooden legs'
+                             borderRadius='lg'
+                           />
+                          <Stack mt='6' spacing='3'>
+                           <Heading size='md'>{game.title}</Heading>
                            
-                        <Text color='red' fontSize='2xl'>
-                            Lowest Price: {game.deal}
-                        </Text>
-
-                    </CardBody>
-
-                    <CardFooter >
-
-                        <ButtonGroup spacing='2'>
-
-                            <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='whatsapp' size='md' _hover={{ bg: 'gray.400', }}>
-                                Track
-                            </Button>
+                           <Text color='blue.600' fontSize='2xl'>
+                             Lowest Price: {game.deal}
+                           </Text>
+                          </Stack>
+                           </CardBody>
+                           <Divider />
+                           <CardFooter>
+                          <ButtonGroup spacing='2'>
+                           <Button onClick={() => handleSaveGame(game.title)} variant='solid' colorScheme='blue'>
+                             Track
+                          </Button>
                           
-                            <Button onClick={() => swapPage(game.dealId)} colorScheme='whatsapp' size='md' _hover={{ bg: 'gray.400', }} >
-                                Checkout deal
-                            </Button>
-
+                          <Button onClick={() => swapPage(game.dealId)}>
+                            Checkout deal
+                          </Button>
                         </ButtonGroup>
+                        </CardFooter>
+                        </Card>
 
-                    </CardFooter>
-
-                </Card>
-           
-                </div>
+                          
+                        </div>
                     )
                 })}
             </div>
         </div>
-        </Box>
-    </Container>
-    </Flex>
         </>
     )
 }
 
 
 export default SearchGames;
-// export as
