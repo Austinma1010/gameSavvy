@@ -47,38 +47,52 @@ const saveGame = () => {
     return (
         <> 
         <div flui1d>
-        <Container>
-        <h1>GameSavvy</h1>
-        <h2>{userData.username} saved games.</h2>
-        </Container>
+            <Container>
+                <h2>{userData.username} saved games.</h2>
+            </Container>
         </div>
+
         <Container>
+
             <h3>
-        {savedGame.length
-            ? `Viewing ${userData.saveGame.length} saved ${userData.saveGame.length === 1 ? 'game' : 'games'}:`
-            : 'You have no saved games!'}
+                {savedGame.length
+                ? `Viewing ${userData.saveGame.length} saved ${userData.saveGame.length === 1 ? 'game' : 'games'}:`
+                : 'You have no saved games!'}
             </h3>
-            <SimpleGrid>
-                {userData.saveGame?.map((game) =>{
-                  return (
-                    <div key={game.gameid}>
-                        <Card>
-                            {game.image ? <Card.img src={game.gameimg} alt={`the cover for ${game.title}`} /> : null}
-                            <Card.body>
-                                <Card.title>{game.title}</Card.title>
-                                <p>Sale price: {game.deal}</p>
-                                <p>retail price: {game.retail}</p>
-                                <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400', }} onClick={() => deleteGame(game.gameid)}>
-                                    Remove game
-                                </Button>
-                            </Card.body>
-                        </Card>
-                    </div>
-                  )  
-                })}
-            </SimpleGrid>
+
+        <SimpleGrid>
+
+            {userData.saveGame?.map((game) =>{
+            
+            return (
+                    
+                <div key={game.gameid}>
+                    
+                    <Card>
+                        {game.image ? <Card.img src={game.gameimg} alt={`the cover for ${game.title}`} /> : null}
+                        
+                        <Card.body>
+                            
+                            <Card.title>{game.title}</Card.title>
+                            <p>Sale price: {game.deal}</p>
+                            <p>retail price: {game.retail}</p>
+                            <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400', }} onClick={() => deleteGame(game.gameid)}>
+                                Remove game
+                            </Button>
+
+                        </Card.body>
+
+                    </Card>
+
+                </div>
+
+            )  
+            })}
+
+        </SimpleGrid>
 
         </Container>
+        
         </>
     );
 };

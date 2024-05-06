@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'; 
 
-import { Card, CardBody, CardFooter,IconButton, Input, Flex, Stack, VStack, Box, Heading, Spacer, ButtonGroup, Button, Image, Text, Container, Center } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter,IconButton, Input, Flex, Box, Heading, Spacer, ButtonGroup, Button, Image, Text, Container } from '@chakra-ui/react'
 // import chakra ui design elements
 
 
@@ -117,7 +117,7 @@ const SearchGames = (props) => {
             return (
               
                 <div key={game.gameId}>
-                <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' align='center'  >
+                <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' align='center'>
 
                     <CardBody align="center">
 

@@ -1,5 +1,5 @@
 const {User} = require('../models')
-const { signToken } = require("../utils/auth");
+const { signToken, authenticate } = require("../utils/auth");
 
 const resolvers = {
     Query: {
@@ -46,12 +46,16 @@ const resolvers = {
   
         return { token, user };
       },
-      saveGame: async (parent, { title }, context) => {
+      saveGame: async (parent, { title, token}, context) => {
+        
+        userToken = await authenticate(token);
+        console.log(userToken);
+        
         // Logic to save a game for the user
-        if (context.user) {
+        if (userToken) {
           console.log('about to update');
             const updatedUser = await User.findByIdAndUpdate(
-              { _id: context.user._id },
+              { _id: userToken },
               { $push: { trackedGames: {title} } },
               { new: true }
             );
@@ -59,7 +63,7 @@ const resolvers = {
             return updatedUser;
           }
     
-          throw AuthenticationError;
+          console.log("something went wrong");
       },
       removeGame: async (parent, { title }, context) => {
         // Logic to remove a game from the user's tracked games
