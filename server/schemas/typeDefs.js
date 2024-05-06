@@ -19,7 +19,7 @@ type User {
 
   
   type Query {
-    me: User
+    me(token: String!): User
   }
 
   type Mutation {
