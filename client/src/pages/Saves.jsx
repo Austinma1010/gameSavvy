@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, IconButton, Input, Box, Stack, Heading, Divider, ButtonGroup, Button, Image, Text, Link  } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter,IconButton, Input, Flex, Box, Heading, Spacer, ButtonGroup, Button, Image, Text, Container } from '@chakra-ui/react'
 import { gameSearchExact } from '../utils/API';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
@@ -70,25 +70,23 @@ const SaveGame = () => {
 
     return (
         <>
-            <div fluid="true">
-                <div>
-                    <h1>GameSavvy</h1>
-                    <h2>saved games.</h2>
-                </div>
-            </div>
-            <div>
-                <h3>
+        <Flex p='5' m='5'>
+        <Box  flex='1' w='100%'>
+        <Text  align="center" fontSize='5xl' >Saved Games</Text>
+                <Text fontsize='4xl'>
                     {savedGames.length
                         ? `Viewing ${savedGames.length} saved ${savedGames.length === 1 ? 'game' : 'games'}:`
                         : 'You have no saved games!'}
-                </h3>
+                </Text>
                 
                     {savedGames.map((game) => {
+
                         return (
                             <div key={game.gameID}>
-                                <Card>
-                                    {game.thumb ? <Image src={game.thumb} alt={`the cover for ${game.external}`} /> : null}
-                                    <CardBody>
+                                <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' align='center'>>
+                                    {game.thumb ? <Image objectFit='cover' src={game.thumb} alt={`the cover for ${game.external}`} /> : null}
+                                    
+                                    <CardBody align="center">
                                         <Heading>{game.external}</Heading>
                                         <p>Sale price: {game.cheapest}</p>
                                         <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400' }} onClick={() => deleteGame(game.gameID)}>
@@ -100,7 +98,9 @@ const SaveGame = () => {
                         )
                     })}
                 
-            </div>
+            
+            </Box>
+            </Flex>
         </>
     );
 };
