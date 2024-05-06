@@ -56,28 +56,42 @@ const { username, email, password } = userFormData;
       minH={'100vh'}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+      bg='white'>
+
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} textAlign={'center'}>
+
+          <Heading fontSize={'4xl'} textAlign={'center'} fontWeight={'light'} >
             Sign up
           </Heading>
+
         </Stack>
+
         <Box
           rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
           p={8}>
+
           <Stack spacing={4}>
+
             <FormControl onChange={handleInputChange} id="email" isRequired>
+
               <FormLabel>Email address</FormLabel>
+
               <Input  onChange={handleInputChange} name="email" value={userFormData.email} type="email" />
+
             </FormControl>
+
             <FormControl onChange={handleInputChange} id="password" isRequired>
+
               <FormLabel>Password</FormLabel>
+
               <InputGroup>
+
                 <Input onChange={handleInputChange} name="password" value={userFormData.password} type={showPassword ? 'text' : 'password'} />
+                
                 <InputRightElement h={'full'}>
+                  
                   <Button
                     variant={'ghost'}
                     onClick={() =>
@@ -85,14 +99,23 @@ const { username, email, password } = userFormData;
                     }>
                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
+
                 </InputRightElement>
+
               </InputGroup>
+
             </FormControl>
+
             <FormControl id="username" isRequired>
+
               <FormLabel>Username</FormLabel>
+
               <Input onChange={handleInputChange} name='username' value={userFormData.username} type="text" />
+
             </FormControl>
+
             <Stack spacing={10} pt={2}>
+
               <Button
                 onClick={handleFormSubmit}
                 loadingText="Submitting"
@@ -103,10 +126,15 @@ const { username, email, password } = userFormData;
                 }}>
                 Sign up
               </Button>
+
             </Stack>
+
           </Stack>
+
         </Box>
+
       </Stack>
+      
     </Flex>
   );
 }
