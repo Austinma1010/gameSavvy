@@ -69,54 +69,38 @@ const SaveGame = () => {
     }
 
     return (
-        <> 
-        <div flui1d>
-            <Container>
-                <h2>{userData.username} saved games.</h2>
-            </Container>
-        </div>
-
-        <Container>
-
-            <h3>
-                {savedGame.length
-                ? `Viewing ${userData.saveGame.length} saved ${userData.saveGame.length === 1 ? 'game' : 'games'}:`
-                : 'You have no saved games!'}
-            </h3>
-
-        <SimpleGrid>
-
-            {userData.saveGame?.map((game) =>{
-            
-            return (
-                    
-                <div key={game.gameid}>
-                    
-                    <Card>
-                        {game.image ? <Card.img src={game.gameimg} alt={`the cover for ${game.title}`} /> : null}
-                        
-                        <Card.body>
-                            
-                            <Card.title>{game.title}</Card.title>
-                            <p>Sale price: {game.deal}</p>
-                            <p>retail price: {game.retail}</p>
-                            <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400', }} onClick={() => deleteGame(game.gameid)}>
-                                Remove game
-                            </Button>
-
-                        </Card.body>
-
-                    </Card>
-
+        <>
+            <div fluid="true">
+                <div>
+                    <h1>GameSavvy</h1>
+                    <h2>saved games.</h2>
                 </div>
-
-            )  
-            })}
-
-        </SimpleGrid>
-
-        </Container>
-        
+            </div>
+            <div>
+                <h3>
+                    {savedGames.length
+                        ? `Viewing ${savedGames.length} saved ${savedGames.length === 1 ? 'game' : 'games'}:`
+                        : 'You have no saved games!'}
+                </h3>
+                
+                    {savedGames.map((game) => {
+                        return (
+                            <div key={game.gameID}>
+                                <Card>
+                                    {game.thumb ? <Image src={game.thumb} alt={`the cover for ${game.external}`} /> : null}
+                                    <CardBody>
+                                        <Heading>{game.external}</Heading>
+                                        <p>Sale price: {game.cheapest}</p>
+                                        <Button colorScheme='whatsapp' _hover={{ bg: 'gray.400' }} onClick={() => deleteGame(game.gameID)}>
+                                            Remove game
+                                        </Button>
+                                    </CardBody>
+                                </Card>
+                            </div>
+                        )
+                    })}
+                
+            </div>
         </>
     );
 };
